@@ -1,26 +1,81 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme inline{
+  --color-background: #0C0E10;
+  --color-foreground: #ffffff;
+  --color-primary: #bb191b;
+  --color-card : #26272E;
+  --font-sans: var(--font-bebas-neue);
+  --font-mono: var(--font-inter);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @theme {
+    --color-background: #0C0E10;
+    --color-foreground: #ffffff;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+.custom-gradient{
+  background : linear-gradient(to bottom, 
+    #ba1818 0%,
+    #c01f1f 17%,
+    #c22020 28%,
+    #c92727 44%,
+    #ce2d2d 67%,
+    #d63535 83%,
+    #da3838 100%
+  );
+}
+
+.custom-gradient-full {
+  background: linear-gradient(to bottom, 
+    #ba1818 0%,
+    #da3838 100%
+  );
+  width: 100%;
+  height: 100%;
+}
+
+.custom-gradient:hover {
+  background: linear-gradient(to bottom, 
+    #d63535 0%,
+    #da3838 17%,
+    #de3d3d 28%,
+    #e24444 44%,
+    #e64a4a 67%,
+    #ea5252 83%,
+    #ee5656 100%
+  );
+  transform: scale(1.05);
+}
+
+/* For small elements like dots */
+.custom-gradient-dot {
+  background: linear-gradient(to bottom, 
+    #ba1818 0%,
+    #da3838 100%
+  );
+  width: 8px;
+  height: 8px;
+  display: block;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
 }
