@@ -1,15 +1,10 @@
 "use client";
 import React from "react";
 
-const NavigationTabs = ({ activeTab, setActiveTab }) => {
+const NavigationTabs = ({ navigationTabs, activeTab, setActiveTab }) => {
   return (
     <div className="bg-gray-800/50 rounded-lg p-2 flex gap-2 overflow-x-auto scrollbar-hide whitespace-nowrap">
-      {[
-        { id: "story", label: "Our Story" },
-        { id: "values", label: "Our Values" },
-        { id: "team", label: "Meet the Team" },
-        { id: "timeline", label: "Timeline" },
-      ].map((tab) => (
+      {navigationTabs.map((tab) => (
         <button
           key={tab.id}
           onClick={() => setActiveTab(tab.id)}

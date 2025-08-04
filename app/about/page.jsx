@@ -6,11 +6,11 @@ import TestimonialCard from "@/components/About/TestimonialCard";
 import TimelineTab from "@/components/About/TimelineTab";
 import ValuesTab from "@/components/About/ValuesTab";
 import FloatingElements from "@/components/Home/FloatingElements";
-import { stats, testimonials } from "@/constants/aboutConstant";
+import { navigationTabs, stats, testimonials } from "@/constants/aboutConstant";
 import React, { useState } from "react";
 import { FaChevronRight, FaPlay } from "react-icons/fa";
 
-const page = () => {
+const AboutPage = () => {
   const [activeTab, setActiveTab] = useState("story");
   return (
     <div className="min-h-screen">
@@ -61,7 +61,11 @@ const page = () => {
       <section className="py-10">
         <div className="container mx-auto px-4">
           <div className="flex justify-center">
-            <NavigationTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+            <NavigationTabs
+              navigationTabs={navigationTabs}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+            />
           </div>
         </div>
       </section>
@@ -123,4 +127,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default AboutPage;
