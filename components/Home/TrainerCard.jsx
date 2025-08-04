@@ -12,7 +12,7 @@ import {
   FaStar,
   FaQuoteLeft,
 } from "react-icons/fa";
-
+import { motion } from "motion/react";
 const TrainerCard = ({ trainer }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -31,7 +31,11 @@ const TrainerCard = ({ trainer }) => {
   const SpecIcon = getSpecializationIcon(trainer.specialization);
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
       className="group relative h-96 w-full perspective-1000"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -158,7 +162,7 @@ const TrainerCard = ({ trainer }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -9,6 +9,7 @@ import FloatingElements from "@/components/Home/FloatingElements";
 import { navigationTabs, stats, testimonials } from "@/constants/aboutConstant";
 import React, { useState } from "react";
 import { FaChevronRight, FaPlay } from "react-icons/fa";
+import { motion } from "motion/react";
 
 const AboutPage = () => {
   const [activeTab, setActiveTab] = useState("story");
@@ -20,9 +21,14 @@ const AboutPage = () => {
         <FloatingElements />
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl lg:text-6xl font-bold mb-6">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-5xl lg:text-6xl font-bold mb-6"
+            >
               About <span className="text-yellow-300">Us</span>
-            </h1>
+            </motion.h1>
             <p className="text-xl text-red-100 mb-8 leading-relaxed">
               For over 15 years, we've been transforming lives through fitness.
               Our story is one of passion, dedication, and the unwavering belief
@@ -43,7 +49,14 @@ const AboutPage = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center group">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                key={index}
+                className="text-center group"
+              >
                 <div className="bg-primary/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors duration-300">
                   <stat.icon className="text-primary text-3xl" />
                 </div>
@@ -51,7 +64,7 @@ const AboutPage = () => {
                   {stat.number}
                 </div>
                 <div className="text-gray-400">{stat.label}</div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -94,7 +107,15 @@ const AboutPage = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-4xl mx-auto">
             {testimonials.map((testimonial, index) => (
-              <TestimonialCard key={index} testimonial={testimonial} />
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: index * 0.15 }}
+                viewport={{ once: true }}
+              >
+                <TestimonialCard testimonial={testimonial} />
+              </motion.div>
             ))}
           </div>
         </div>

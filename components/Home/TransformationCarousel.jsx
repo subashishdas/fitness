@@ -4,16 +4,21 @@ import Slider from "react-slick";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import TransformationSlide from "@/components/Home/TransformationSlide";
 import { transformations } from "@/constants/constant";
+import { motion } from "motion/react";
 
 const TransformationCarousel = () => {
   const NextArrow = ({ onClick }) => {
     return (
-      <div
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
         className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-red-500 hover:bg-red-600 p-3 rounded-full cursor-pointer z-10 shadow-lg"
         onClick={onClick}
       >
         <FaChevronRight className="text-white text-xl" />
-      </div>
+      </motion.div>
     );
   };
 

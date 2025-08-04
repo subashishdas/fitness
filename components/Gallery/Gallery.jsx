@@ -8,6 +8,7 @@ import "lightgallery/css/lightgallery.css";
 import "lightgallery/css/lg-zoom.css";
 import "lightgallery/css/lg-thumbnail.css";
 import axios from "axios";
+import { motion } from "motion/react";
 
 const Gallery = () => {
   const galleryRef = useRef(null);
@@ -16,7 +17,10 @@ const Gallery = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-
+  const imageVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1 },
+  };
   // Use refs to track current values without causing re-renders
   const loadingRef = useRef(false);
   const hasMoreRef = useRef(true);
@@ -114,7 +118,12 @@ const Gallery = () => {
         className="columns-2 sm:columns-3 md:columns-4 gap-4 space-y-4 px-4"
       >
         {images.map((src, index) => (
-          <a
+          <motion.a
+            variants={imageVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
             href={src}
             key={`${src}-${index}`}
             className="block overflow-hidden rounded-lg cursor-pointer"
@@ -125,7 +134,7 @@ const Gallery = () => {
               className="w-full h-auto hover:scale-105 transition-transform duration-300"
               loading="lazy"
             />
-          </a>
+          </motion.a>
         ))}
       </div>
 

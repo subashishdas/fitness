@@ -6,7 +6,7 @@ const GalleryPage = () => {
     <section className="py-10">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center gap-2 pb-12">
-          <h2 className="text-2xl md:text-3xl font-semibold text-center tracking-wide">
+          <h2 className="text-4xl md:text-5xl font-semibold text-center tracking-wide">
             Gallery
           </h2>
           <div className="w-20 h-1 bg-primary rounded-full"></div>

@@ -2,10 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaChevronRight } from "react-icons/fa";
+import { motion } from "motion/react";
 
 const Hero = () => {
   return (
-    <section className="w-full min-h-[calc(100vh-100px)] py-10 relative overflow-hidden">
+    <motion.section
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="w-full py-10 relative overflow-hidden"
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black opacity-50"></div>
       <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-red-600/20 to-red-800/20 rounded-full blur-3xl"></div>
@@ -23,32 +29,56 @@ const Hero = () => {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl lg:text-7xl font-bold tracking-wider leading-tight mb-6">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-5xl lg:text-7xl font-bold tracking-wider leading-tight mb-6"
+          >
             Start{" "}
             <span className="bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">
               Training
             </span>
             <br />
             Today
-          </h1>
+          </motion.h1>
 
           {/* Description */}
-          <p className="text-gray-300 mt-4 font-mono text-base md:text-lg leading-relaxed mb-8">
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-gray-300 mt-4 font-mono text-base md:text-lg leading-relaxed mb-8"
+          >
             Transform your body and mind with our cutting-edge fitness programs.
             Join thousands who've already started their journey to greatness.
-          </p>
+          </motion.p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 items-center md:items-start justify-center md:justify-start ">
-            <button className="custom-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center gap-2 cursor-pointer group relative overflow-hidden">
+            <motion.button
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="custom-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center gap-2 cursor-pointer group relative overflow-hidden"
+            >
               <span className="relative z-10">Start Free Trial</span>
               <span className="bg-white rounded-full p-2 transition-all duration-300 ease-out group-hover:translate-x-2 relative z-10">
                 <FaChevronRight className="text-red-600" size={14} />
               </span>
-            </button>
-            <button className="  border-2 border-primary text-white px-6 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:bg-card  hover:border-white cursor-pointer">
+            </motion.button>
+            <motion.button
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="border-2 border-primary text-white px-6 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:bg-card  hover:border-white cursor-pointer"
+            >
               Explore More
-            </button>
+            </motion.button>
           </div>
 
           {/* Stats */}
@@ -98,7 +128,7 @@ const Hero = () => {
           <div className="w-1 h-3 bg-red-500 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { FaArrowRight, FaClock, FaFire } from "react-icons/fa";
-
+import { motion } from "motion/react";
 const TrainingProgramCard = ({
   name,
   image,
@@ -9,14 +9,29 @@ const TrainingProgramCard = ({
   duration = "30 min",
   intensity = "High",
 }) => {
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
   return (
-    <div className="group bg-card/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 hover:scale-105 hover:border-red-500/50 transition-all duration-300 cursor-pointer relative overflow-hidden">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      whileHover={{ y: -5 }}
+      transition={{ type: "spring", stiffness: 100 }}
+      variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
+      className="group bg-card/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 hover:scale-105 hover:border-red-500/50 transition-all duration-300 cursor-pointer relative overflow-hidden"
+    >
       {/* Background glow effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-red-600/5 to-red-800/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
       <div className="relative z-10">
         {/* Header with image and badges */}
-        <div className="flex flex-col items-center mb-4">
+        <div
+          variants={cardVariants}
+          className="flex flex-col items-center mb-4"
+        >
           {/* Image container with enhanced styling */}
           <div className="relative mb-4">
             <div className="w-24 h-24 custom-gradient rounded-full flex items-center justify-center p-1 group-hover:scale-110 transition-transform duration-300">
@@ -45,7 +60,7 @@ const TrainingProgramCard = ({
         </div>
 
         {/* Content */}
-        <div className="text-center space-y-3">
+        <div variants={cardVariants} className="text-center space-y-3">
           <h3 className="text-xl font-bold text-white group-hover:text-red-400 transition-colors duration-300">
             {name}
           </h3>
@@ -55,7 +70,7 @@ const TrainingProgramCard = ({
         </div>
 
         {/* Action button */}
-        <div className="mt-6 flex justify-center">
+        <div variants={cardVariants} className="mt-6 flex justify-center">
           <button className="flex items-center gap-2 custom-gradient text-white px-4 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
             Start Training
             <FaArrowRight
@@ -65,7 +80,7 @@ const TrainingProgramCard = ({
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

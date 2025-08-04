@@ -15,7 +15,7 @@ import "slick-carousel/slick/slick-theme.css";
 import TransformationCarousel from "@/components/Home/TransformationCarousel";
 import TrainerCard from "@/components/Home/TrainerCard";
 import BookTrialBanner from "@/components/Home/BookTrialBanner";
-
+import { motion } from "motion/react";
 function HomePage() {
   return (
     <div>
@@ -119,7 +119,14 @@ function HomePage() {
       </section>
 
       {/* Book Trial Banner */}
-      <BookTrialBanner />
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <BookTrialBanner />
+      </motion.div>
     </div>
   );
 }

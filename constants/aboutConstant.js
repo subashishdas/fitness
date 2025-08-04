@@ -16,6 +16,13 @@ export const stats = [
   { icon: FaMapMarkerAlt, number: "5", label: "Locations" },
 ];
 
+export const navigationTabs = [
+  { id: "story", label: "Our Story" },
+  { id: "values", label: "Our Values" },
+  { id: "team", label: "Meet the Team" },
+  { id: "timeline", label: "Timeline" },
+];
+
 export const values = [
   {
     icon: FaHeart,

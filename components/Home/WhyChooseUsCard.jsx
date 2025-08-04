@@ -1,6 +1,6 @@
 import React from "react";
 import { FaCrown, FaStar, FaChevronRight } from "react-icons/fa";
-
+import { motion } from "motion/react";
 const WhyChooseUsCard = ({
   icon: Icon,
   title,
@@ -9,7 +9,11 @@ const WhyChooseUsCard = ({
   highlight = false,
 }) => {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.1 }}
+      viewport={{ once: true }}
       className={`group relative bg-card/50 backdrop-blur-sm border rounded-xl p-6 cursor-pointer transition-all duration-300 overflow-hidden ${
         highlight
           ? "border-red-500/50 bg-gradient-to-br from-red-600/10 to-red-800/10"
@@ -87,7 +91,7 @@ const WhyChooseUsCard = ({
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
